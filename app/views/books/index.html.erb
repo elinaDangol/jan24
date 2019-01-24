@@ -1,0 +1,19 @@
+<html>
+  <head>
+  <title><h1>Book#index</h1></title>
+  </head>
+
+  <body>
+    
+    <p> 
+      <%= @title %>
+    </p>
+    <% for i in 1..10%>
+    <ul>
+    <li><%= Faker::Book.title %></li>
+    </ul>
+    <%end%>
+      
+  </body>
+</html>
+
