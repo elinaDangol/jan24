@@ -1,0 +1,98 @@
+1. rails generate migration CreateAuthors name:string age:integer
+
+2. rails db:migrate
+
+Book.connection
+
+to add 5 book in loop
+
+names={elina, sristi, subesh}
+name=names.each
+  book=Books.create(name:name)
+end
+
+
+rails generate migration AddAuthorIdToBooks author_id:integer
+
+sample_book=[
+  {name:"I like you"},
+  {name:"Life of Pi"},
+  {name:"Gini is bad"},
+  {name:"Night at Museum"},
+  {name:"Are you there?"}
+]
+
+sample_book.each do |book|
+  Book.create(book)
+end
+
+author Books
+
+Author.find(id=1).books
+authors = Author.all
+result = []
+
+authors.each do |author|
+  result << { author.name => author.books.pluck(:name) }
+end  
+
+
+
+authors = Author.all
+result = []
+
+authors.each do |author|
+  result << { if author.name.present? ? author.name : 'No Name' => author.books.pluck(:name) }
+end  
+
+
+
+describe BookList do
+  describe '.add' do
+    subject(:add_name) {described_class.new(name).add}
+
+    context 'when user adds book name' do
+      let (:name) { Name.new("CS")}
+
+      # before do
+      #   allow(BookName).to_receive
+      it 'add book name to the list' do
+    end
+    context 'when user does not add book name' do
+      let (:name) {EmptyName.new("")}
+      it 'does not add empty name to the list'
+    end    
+  end  
+end  
+
+
+
+
+require 'rails_helper'
+
+describe Book do
+  describe '.add' do
+    subject(:add) { described_class.new(name).add }
+    context 'when user adds book name' do
+      let(:name) { Name.new("CS")}
+
+      before do
+        allow(Book).should_receive(:validate_name)
+          .with(name).and_return(true)
+      end  
+      it 'adds book name to the list' do
+      end  
+    end
+
+    context 'when user does not add book name' do
+      let(:name) { EmptyName.new("")}
+
+      before do
+        allow(Book).should_receive(:validate_name)
+          .with(name).and_return(false)
+        end  
+      it 'does not add empty name to the list' do
+      end  
+    end    
+  end  
+end  
